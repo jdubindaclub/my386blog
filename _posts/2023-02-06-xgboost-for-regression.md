@@ -46,11 +46,11 @@ One of the coolest things about decision tree learning is that it is very easy t
 
 Decision Tree:
 
-![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/xgboostSmallTree.png)
+![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/images/xgboostSmallTree.png)
 
 Variable Importance:
 
-![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/xgboostImportance.png)
+![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/images/xgboostImportance.png)
 
 
 This is all I will cover for now, but don't forget the other important steps in the machine learning process (model validation, predictions, etc.). 

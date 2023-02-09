@@ -12,4 +12,4 @@ image: /assets/images/dallerandom.png
 
 - I have a bunch of previously gathered datasets that I have used for machine learning projects (all of them are .arff files). I believe I will use one of those.
 
-![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/dallerandom2.png)
+![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/images/dallerandom2.png)
