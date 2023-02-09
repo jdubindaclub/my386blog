@@ -2,7 +2,7 @@
 layout: post
 title:  "XGBoost for Regression"
 author: Jake Whitworth
-description: Tutorial on XGBoost for Regression
+description: "Tutorial on XGBoost for Regression"
 image: /assets/xgboost-blog.png
 ---
 
