@@ -6,8 +6,6 @@ description: "Tutorial on XGBoost for Regression"
 image: /assets/images/xgboost-blog.png
 ---
 
-DALL-E doesn't do well with creating words, so the weird text in the cover photo is not Arabic, it is DALL-E-ic.
-
 # We Love Regression
 
 Regression is a model that I am incredibly familiar with, and feel as though I am quite experienced with. I have used regression models to predict, as well as to explain data. In a recent project of mine, I was faced with a dataset that had more than 20 independent variables, and one contiuous variable. Wanting to mix things up, I looked up different algorithms that I could use to predict this continuous variable. After one quick search on kaggle, I was introduced to XGBoost algorithm, a model that regularly wins kaggle competitions.
