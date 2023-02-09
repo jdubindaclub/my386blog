@@ -41,15 +41,14 @@ You can read more about these parameters in the XGBoost documentation.
 
 The leave-one-out cross validation process took about two minutes to run (loocv will not be the best approach for large datasets). The RMSE and Rsquared values were significantly better than my linear regression model. 
 
-# Variable Importance
 
 One of the coolest things about decision tree learning is that it is very easy to interpret. If I were to try and calculate variable importance in a linear regression model, it would be difficult to do if I couldn't standardize all of the variables. There are a few ways variable importance can be calculated, with each method having its pros and cons. The XGBoost has built-in functions to visualize variable importance, and the decision tree of your model. Attached are the variable importance plot and decision tree plot for one of the more optimal models (the most optimal model had a more complicated tree, which was bigger and harder to visualize, so I am showing a more simple tree for visualization purposes).
 
-## Variable Importance
+Variable Importance
 
 ![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/xgboostImportance.png)
 
-## Decision Tree
+Decision Tree
 
 ![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/xgboostSmallTree.png)
 
