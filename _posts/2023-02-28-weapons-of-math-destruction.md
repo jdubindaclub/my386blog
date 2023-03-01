@@ -33,15 +33,20 @@ The thing that I liked about this book is quite general, but I enjoyed the topic
 
 To be completely honest, the book was a little bit of a downer. It is one of those books where you gain valuable insight into potential threats that society is facing, but there is not much hope given to fix the potential threat. One of the more depressing parts of the book is where Cathy explains the difficulties of dismantling these harmful algorithms. Due to the way our society works, these algorithms are protected by intellectual property laws and it is completely up to large corporations to make sure that the models they are using are not causing harm in society. This is a difficult task because we know that large corporations are not always the most ethical, and it is easy to assume that they would happily trade fairness for efficiency.
 
+New Zealand proposed a law that sets criteria on algorithms to ensure equality, as well as increase transparency of algorithms that are currently being used. An older article from 2020 describes their proposal here:
+
+<a href="https://medium.com/one-zero/new-zealand-has-a-radical-idea-for-fighting-algorithmic-bias-transparency-67500ca71b5
+"> Medium </a> 
+
 I give this complaint only because I'm required to find one. At the end of the day, it is worth reading somewhat depressing material in order to gain valuable insights into the issues that our world is facing. "C'est la vie", as the French say.
 
 # Summary
 
-Overall, Weapons of Math Destruction is a powerful exploration of ideas that are often overlooked, yet have far-reaching implications in our society. I would recommend this book to anyone that fits into either of these two categories: First, anyone that is interested in data science. It is important for data scientists to understand the impact that their work can have on society. Second, anyone who has never been exposed to the idea of algorithmic bias. Whether you are a mathematician or not, it is still easy to understand the concepts that are discussed in this book.
+Overall, Weapons of Math Destruction is a powerful exploration of ideas that are often overlooked, yet have far-reaching implications in our society. I would recommend this book to anyone that fits into either of these two categories: First, anyone that is interested in data science. It is important for data scientists to understand the impact that their work can have on society. Second, anyone who has never been exposed to the idea of algorithmic bias. Whether you are a mathematician or not, it is still easy to understand the concepts that are discussed in this book. 
 
 # Rating
 
-I give this book a 4.5/5.
+I give this book 4.5 stars. I would give it 5 stars, but I feel that the content does not attract an incredibly wide audience.
 
 # Acknowledgements
 
