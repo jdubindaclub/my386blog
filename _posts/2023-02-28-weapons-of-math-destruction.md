@@ -3,7 +3,7 @@ layout: post
 title:  "Weapons of Math Destruction"
 author: Jake Whitworth
 description: "Book Review of Cathy O'Neil's book: Weapons of Math Destruction"
-image: /assets/images/xgboost-blog.png
+image: /assets/images/wmd.jpeg
 ---
 
 # Overview
@@ -14,9 +14,9 @@ how certain algorithms trade justice and fairness for efficiency (these algorith
 
 # Why I Love This Book
 
-Let me take you back 4 years ago when I was a freshman studying finance. I didn't have much direction as far as career path went, and I didn't particularly enjoy the classes I was taking. In my first semester, I was in a writing class and somehow ended up on the topic of algorithms as a writing topic. Although I had never thought about pursuing statistics or mathematics, I found the topic of algorithmic bias to be interesting. For the research portion of this writing project, I submitted a youtube video that I made comprised of clips of people talking about algorithmic bias. Cathy O'Neil was one of the people I included in the video, and I cited a her book in my paper, but I never actually read the book. 
+Let me take you back 4 years ago to when I was a freshman studying finance. I didn't have much direction as far as career path went, and I didn't particularly enjoy the classes I was taking. In my first semester, I was in a writing class and somehow ended up on the topic of algorithms as a writing topic. Although I had never thought about pursuing statistics or mathematics, I found the topic of algorithmic bias to be interesting. For the research portion of this writing project, I submitted a youtube video that I made comprised of clips of people talking about algorithmic bias. Cathy O'Neil was one of the people I included in the video, and I cited a her book in my paper, but I never actually read the book. 
 
-My video that I clipped together four years ago highlights some specific examples of algorithmic bias. The video is included below: 
+My video that I clipped together four years ago highlights some specific examples of algorithmic bias. Cathy O'Neil is the first speaker in the video, I included clips of her from a Ted Talk that she gave. The video is included below: 
 
 {% raw %} {% include youtube.html id="xbxv23MGh78" %}
 {% endraw %}
