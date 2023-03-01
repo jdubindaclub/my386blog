@@ -18,9 +18,6 @@ Let me take you back 4 years ago to when I was a freshman studying finance. I di
 
 My video that I clipped together four years ago highlights some specific examples of algorithmic bias. Cathy O'Neil is the first speaker in the video, I included clips of her from a Ted Talk that she gave. The video is included below: 
 
-{% raw %} {% include youtube.html id="xbxv23MGh78" %}
-{% endraw %}
-
 {% include youtube.html id="xbxv23MGh78" %}
 
 Simply put, this book has a special place in my library because it was one of the sources of inspiration that helped me switch to data science.
