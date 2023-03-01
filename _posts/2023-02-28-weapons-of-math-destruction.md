@@ -36,7 +36,7 @@ To be completely honest, the book was a little bit of a downer. It is one of tho
 New Zealand proposed a law that sets criteria on algorithms to ensure equality, as well as increase transparency of algorithms that are currently being used. An older article from 2020 describes their proposal here:
 
 <a href="https://medium.com/one-zero/new-zealand-has-a-radical-idea-for-fighting-algorithmic-bias-transparency-67500ca71b5
-"> Medium </a> 
+"> New Zealand Has a Radical Idea for Fighting Algorithmic Bias: Transparency </a> 
 
 I give this complaint only because I'm required to find one. At the end of the day, it is worth reading somewhat depressing material in order to gain valuable insights into the issues that our world is facing. "C'est la vie", as the French say.
 
