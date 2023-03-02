@@ -51,4 +51,6 @@ I give this book 4.5 stars. I would give it 5 stars, but I feel that the content
 
 I would like to thank my favorite editor, ChatGPT. I am practically illiterate, which means my writing is often times unintelligible. To account for this, I will write out what I THINK is a cohesive paragraph, then pass it to ChatGPT with the prompt "make this sound better." I will then take the response from ChatGPT and edit it down to remove or fix any contextual errors that it may have added. 
 
+I invite anyone that is not familiar with the implications of algorithmic bias to read this book. It is an important concept for stat scientists to understand.
+
 
