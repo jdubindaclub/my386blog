@@ -40,6 +40,8 @@ I started my exploration by using one of my favorite libraries: YData Profiling.
 
 Here is the interactive YData Profiling report:
 
+<iframe src="assets/smoking_drinking_report.html" width="100%" height="600px"></iframe>
+
 Instead of having to set up a loop to show me heatmaps, correlation plots between variables, and other visualizations, YData has all of those plots readily available. This is a great tool for data exploration, and I highly recommend it. To find out more about this library, you can visit their <a href="https://docs.profiling.ydata.ai/latest/"> website. </a> 
 
 We can see in the YData report that multiple columns such as waistline, HDL_chole, LDL_chole, and triglyceride have significant outliers, and are heavily skewed. 
