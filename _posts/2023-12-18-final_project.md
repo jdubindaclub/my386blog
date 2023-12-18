@@ -38,8 +38,6 @@ One of the advantages of deep learning models is that they can output uncertaint
 
 I started my exploration by using one of my favorite libraries: YData Profiling. This library quickly and automatically generates descriptive statistics, data type information, missing value analysis, and distribution visualizations for each column in your dataset. This library also offers advanced features like correlation analysis, unique value counts, and data quality assessments. YData was able to generate the dashboard in 1 minute and 11 seconds. Using the YData report I was able to see that there were 26 rows of duplicates, and no missing values. 
 
-To view the YData Report on my data, you can [download the full report here](https://github.com/jdubindaclub/my386blog/blob/main/assets/smoking_drinking_report.html)
-
 Instead of having to set up a loop to show me heatmaps, correlation plots between variables, and other visualizations, YData has all of those plots readily available. This is a great tool for data exploration, and I highly recommend it. To find out more about this library, you can visit their <a href="https://docs.profiling.ydata.ai/latest/"> website. </a> 
 
 We can see in the YData report that multiple columns such as waistline, HDL_chole, LDL_chole, and triglyceride have significant outliers, and are heavily skewed. 
