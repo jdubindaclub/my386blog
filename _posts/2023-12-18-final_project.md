@@ -34,7 +34,9 @@ One of the advantages of deep learning models is that they can output uncertaint
 
 
 
-# Data Exploration
+# Exploratory Data Analysis
+
+## Data Exploration
 
 I started my exploration by using one of my favorite libraries: YData Profiling. This library quickly and automatically generates descriptive statistics, data type information, missing value analysis, and distribution visualizations for each column in your dataset. This library also offers advanced features like correlation analysis, unique value counts, and data quality assessments. YData was able to generate the dashboard in 1 minute and 11 seconds. Using the YData report I was able to see that there were 26 rows of duplicates, and no missing values. 
 
@@ -42,7 +44,15 @@ Instead of having to set up a loop to show me heatmaps, correlation plots betwee
 
 We can see in the YData report that multiple columns such as waistline, HDL_chole, LDL_chole, and triglyceride have significant outliers, and are heavily skewed. 
 
+## Data Cleaning
 
+My traditional machine learning models are much closer to parametric than my deep learning models. This means that outliers will affect them more than my deep learning models. I will remove outliers from my training data for both my ML and DL models, for continuity sake.
+
+To remove outliers, I used the z-score method. I could have used the IQR method, but I felt that it was not robust-enough. I used a z-score threshold of 3, meaning that any data point that was 3 standard deviations away from the mean was removed. I chose this threshold because I felt that it was a good balance between removing outliers and removing too much data. This process removed 87,291 from the training data, taking it from 991,320 rows to 904,029. 
+
+I then compared the before and after distributions of all numeric variables for a visual check. Here are the four variables mentioned before that had outliers (blue is before outliers were removed, orange is after):
+
+![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/images/outlier_removal.png)
 
 
 # Model Selection
