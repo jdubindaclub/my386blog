@@ -5,6 +5,7 @@ author: Jake Whitworth
 description: "Comparison of different ML methods against a Neural Network with Uncertainty Calibration on tabular data."
 image: /assets/images/ml_dl.png
 ---
+The repository for this project can be found <a href="https://github.com/jdubindaclub/486_project"> here. </a>
 
 # Modern Machine Learning
 
