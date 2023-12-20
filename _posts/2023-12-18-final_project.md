@@ -12,7 +12,7 @@ In this age of AI, transformers and other neural network architectures are all t
 
 ![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/images/ai_ml_dl.png)
 
-Deep learning has proved to be a powerful tool in AI, but it has its limitations. One such limitation is that deep learning has historically performed worse on tabular data when compared to traditional machine learning models. I aim to address that limitation in this project.
+Deep learning has proved to be a powerful tool in AI, but it has its limitations. One such limitation is that deep learning has historically performed worse on tabular data when compared to traditional machine learning models. I aim to address that limitation in this project, as well as introduce my PyTorch deep learning code base that I have created.
 
 ## My Background with Deep Learning and Tabular Data
 
@@ -31,6 +31,8 @@ I am going to use two traditional machine learning models, and one custom deep l
 One of the advantages of deep learning models is that they can output uncertainty. This is useful in many applications, such as self-driving cars. If a self-driving car is unsure about what it is seeing, it can output a high uncertainty score. This uncertainty score can then be used to determine if the car should stop or not. This is a very useful feature, but it is not unique to deep learning models. There are many traditional machine learning models that can output uncertainty scores. At the hedge fund, uncertainty calibration was the method that I saw had the biggest impact on the models. I aim to use this method to improve the performance of my deep learning model on tabular data.
 
 # About the Data
+
+The data I am using is the <a href="https://www.kaggle.com/datasets/sooyoungher/smoking-drinking-dataset/data"> Smoking and Drinking Dataset with body signal </a> from kaggle. The data contains 991,346 rows, 991,320 rows after removing nulls. There are 23 features: - 1 categorical, 22 numerical. The task that I am trying to predict is whether or not a person drinks, which is a binary classification task. The data is balanced, with 50% of people being drinkers and 50% being non-drinkers. The license for the data is posted on kaggle, and states that the data is free to use for any purpose. The information about each feature is shown below:
 
 ![Figure](https://raw.githubusercontent.com/jdubindaclub/my386blog/main/assets/images/smoking_variables.png)
 
@@ -122,31 +124,61 @@ Once the hyperparameter tuning was complete, I used the best parameters from the
 
 ## DL Model
 
-I am using a custom DL model that is based off of fastai's tabular model. I created the model using PyTorch. I could write an entire blog post about the mini deep learning codebase that I set up for this model, but I will try to keep it brief. The model is contained in the model.py file. I created the model as its own class, and implemented 7 different layers. This model uses an evidential loss function (contained in loss_fxs.py), which is what allows the model to calibrate based on uncertainty. 
+For my DL model, I created an entire PyTorch deep learning code base in my repo. I have been working on this code base for a while, it is meant to be very robust and completely customizable. I created custom models, fitters, callback metrics, datasets, pipelines, dataloaders, loss functions, activation functions, and helper functions. All of these things are contained in different files and work collaboratively to create a PyTorch deep learning model. I will not go into detail about how each of these things work, as the code base is very extensive. 
 
-This model uses BatchNorm, and is designed to use BatchNorm on your continuous variables and encode your categorical variables. However, in my experience, I have found it is better to encode categorical variables in preprocessing, and pass in all of the variables as continuous. I also prefer to use scipy.stats.zscore for standardization. To do this, I created a custom transformer for zscore regularization (contained in util.py), and changed the preprocessing pipeline to FIRST encode the categorical variables, then zscore all of the variables. Here is the code for the preprocessing pipeline:
+The DL model that I created is based off of Fastai's tabular model. Here is the code that I used to create the model:
 
 ```python
-ordinal_transformer = Pipeline(steps=[
-    ('ordinal', OrdinalEncoder())
-])
+class TabularModel(nn.Module):
+    """Basic model for tabular data. Same as fastai's tab model except forward function expects x_cont first and both x_cont and x_cat are optional.
+        Args:
+            emb_szs (List[float]): Embedding sizes for categorical features. If empty list is passed in then no embeddings are created.
+            n_cont (int): Number of continuous features.
+            out_sz (int): output dim size.
+            layers (List[int]): List of hidden layer sizes.
+            ps (List[float], optional): List of probabilities for each layer's dropout. Defaults to None.
+            emb_drop (float, optional): Probability of dropout for embedding layer. Defaults to 0..
+            y_range (_type_, optional): Range of y. Defaults to None.
+            use_bn (bool, optional): Switch to turn on batchnorm. Defaults to True.
+            bn_final (bool, optional): Switch to turn on batchnorm in the final layer. Defaults to False.
+            sigma (int, optional): Parameter for stochastic gates (see paper). Defaults to 0.5.
+            lam (int, optional): Parameter for stochastic gates (see paper). Defaults to 0.01.
+    """
+    def __init__(self, emb_szs:List[float], n_cont:int, out_sz:int, layers:List[int], ps:List[float]=None,
+                 emb_drop:float=0., y_range=None, use_bn:bool=True, bn_final:bool=False):
+        super().__init__()
+        if ps is None: ps = [0]*len(layers)
+        ps = ifnone(ps, [0]*len(layers))
+        ps = listify(ps, layers)
+        self.embeds = nn.ModuleList([flayers.embedding(ni, nf) for ni,nf in emb_szs])
+        self.emb_drop = nn.Dropout(emb_drop)
+        self.bn_cont = nn.BatchNorm1d(n_cont)
+        n_emb = sum(e.embedding_dim for e in self.embeds)
+        self.n_emb,self.n_cont,self.y_range = n_emb,n_cont,y_range
+        sizes = self.get_sizes(layers, out_sz)
+        actns = [nn.ReLU(inplace=True) for _ in range(len(sizes)-2)] + [None]
+        layers = []
+        for i,(n_in,n_out,dp,act) in enumerate(zip(sizes[:-1],sizes[1:],[0.]+ps,actns)):
+            layers += flayers.bn_drop_lin(n_in, n_out, bn=use_bn and i!=0, p=dp, actn=act)
+        if bn_final: layers.append(nn.BatchNorm1d(sizes[-1]))
+        self.layers = nn.Sequential(*layers)
 
-nominal_transformer = Pipeline(steps=[
-    ('onehot', OneHotEncoder(handle_unknown='ignore'))
-])
+    def get_sizes(self, layers, out_sz):
+        return [self.n_emb + self.n_cont] + layers + [out_sz]
 
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('ord', ordinal_transformer, ordinal_cols),
-        ('nom', nominal_transformer, nominal_cols)
-    ],
-    remainder='passthrough'  #stops pipeline from dropping numeric columns
-)
-
-pipeline = Pipeline(steps=[
-    ('preprocessor', preprocessor),
-    ('zscore_scaler', ZScoreScaler())
-])
-
-X_transformed = pipeline.fit_transform(X)
+    def forward(self, x_cont:torch.Tensor=None, x_cat:torch.Tensor=None, **kwargs) -> torch.Tensor:
+        if self.n_emb != 0:
+            x = [e(x_cat[:,i]) for i,e in enumerate(self.embeds)]
+            x = torch.cat(x, 1)
+            x = self.emb_drop(x)
+        if self.n_cont != 0:
+            x_cont = self.bn_cont(x_cont.float())
+            x = torch.cat([x, x_cont], 1) if self.n_emb != 0 else x_cont
+        x = self.layers(x)
+        if self.y_range is not None:
+            x = (self.y_range[1]-self.y_range[0]) * torch.sigmoid(x) + self.y_range[0]
+        return x
 ```
+After some playing around with my model, I found that using 3 hidden layers, with 4337 nodes in the first hidden layer, 1290 nodes in the second hidden layer, and 182 nodes in the last hidden layer seemed to be the appropriate size for the dataset. I also assigned a dropout rate to the respective layers of 0.2, 0.2, and 0.05. I used a custom loss function that implements uncertainty calibration, which is a method of calibrating the model so that the probabilities it outputs are representative of the certainty that the model has in the prediction. I created a custom learning rate scheduler that uses the one-cycle policy, which is a method of training the model that uses a learning rate that increases and then decreases over the course of training. I used a custom accuracy callback metric to measure the accuracy of the model in the validation set. I used the AdamW optimizer, which is a variant of the Adam optimizer that uses weight decay. 
+
+I am incredibly proud of this code base that I have created, and plan to use it as the basis of all my deep learning project from this point on. Right now all of my files for the code base are kept in the same "deeplearning" directory, but I plan to further organize them into separate directories for each type of file. 
